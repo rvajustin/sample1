@@ -7,7 +7,8 @@ using Xunit;
 namespace Billing.Tests.Models;
 
 public class ProjectTests
-{    [Fact]
+{    
+    [Fact]
     public void Project_Constructor_SetsPropertiesCorrectly()
     {
         var dateRange = new DateRange("2023-01-01", "2023-01-10");

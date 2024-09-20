@@ -51,7 +51,7 @@ ProjectSet[] sets = {set1, set2, set3, set4};
 var i = 1;
 foreach (var projectSet in sets)
 {
-    var projectBills = projectSet.Calculate(OverlapConfiguration.TakeFirst);
+    var projectBills = projectSet.Calculate(OverlapConfiguration.TakeGreater);
 
     Console.WriteLine($"Project Set #{i}");
     foreach (var (project, bill) in projectBills.OrderBy(pb => pb.Key.Dates.Start))
