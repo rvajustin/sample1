@@ -15,6 +15,7 @@ public record DateRange(DateOnly Start, DateOnly End)
     /// </summary>
     public virtual bool Equals(DateRange? other) => other?.Start == Start && other?.End == End;
 
+    // Whenever overriding Equals, you should also override GetHashCode.
     public override int GetHashCode() => $"{Start}-{End}".GetHashCode();
     
     /// <summary>

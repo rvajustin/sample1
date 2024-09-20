@@ -27,6 +27,7 @@ public record Project
 
     public virtual bool Equals(Project? other) => other?.Id == Id;
 
+    // Whenever overriding Equals, you should also override GetHashCode.
     public override int GetHashCode() => Id.GetHashCode();
 
     public void Deconstruct(out Guid id, out string name, out CityType cityType, out DateRange dates)

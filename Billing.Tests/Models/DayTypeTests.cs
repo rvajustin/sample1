@@ -44,6 +44,6 @@ public class DayTypeTests
     {
         var travelDay = DayType.Travel;
         Assert.Throws<ArgumentException>(()
-            => travelDay.Rates.Add(CityType.HiCost, new ExtendedRate(CityType.HiCost, 60)));
+            => travelDay.Rates.Add(CityType.HiCost, new Rate(CityType.HiCost, 60)));
     }
 }
