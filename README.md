@@ -22,12 +22,16 @@ cities.
 
 ## Getting Started
 This getting started guide is tailored for MacOS users.
-1. Install dotnet via: `brew install dotnet@8` -> this installs the dotnet 8.0 SDK.
-2. Run the app by executing the following command from the root directory of the project:
+1. If you don't have it, install Homebrew by running the following command in your terminal:
+   ```shell
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+2. Install dotnet 8 via: `brew install dotnet@8`
+3. Run the app by executing the following command from the root directory of the project:
    ```shell
    dotnet run --project ./Billing.Console/Billing.Console.csproj
    ```
-3. If you run into issues with any missing dependencies, you may need to download them (although `dotnet run` should
+4. If you run into issues with any missing dependencies, you may need to download them (although `dotnet run` should
    handle this for you). Restore the dependencies by running the following command:
    ```shell
    dotnet restore
