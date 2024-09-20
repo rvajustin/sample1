@@ -2,7 +2,10 @@ using System.ComponentModel.Design;
 
 namespace Billing.Domain.Common.Abstractions;
 
-public record Enumeration(string Key, string Value)
+/// <summary>
+/// Base record for enumerations; used for implemening the Enumeration pattern instead of using enums.
+/// </summary>
+public abstract record Enumeration(string Key, string Value)
 {
     public override string ToString() => Value;
     

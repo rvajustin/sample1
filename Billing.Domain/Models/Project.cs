@@ -3,6 +3,9 @@ using Billing.Domain.Common.Abstractions;
 
 namespace Billing.Domain.Models;
 
+/// <summary>
+/// Represents a project that can be billed.
+/// </summary>
 public record Project
 {
     public Guid Id { get; }

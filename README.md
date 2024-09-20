@@ -49,8 +49,8 @@ I found logical omissions in the requirements:
    allows the developer to specify one of these four mechanisms to handle the case:
     - `Take First Day`: Take the billable day of the project that starts first.
     - `Take Last Day`: Take the billable day of the project starts last.
-    - `Take Greater Cost`: Take the billable day of the project with the greater cost.
-    - `Take Lesser Cost`: Take the billable day of the project with the lesser cost.
+    - `Take Greater Amount`: Take the billable day of the project with the greater amount.
+    - `Take Lesser Amount`: Take the billable day of the project with the lesser amount .
 2. Since a date can only be billed once, there is another issue when a travel day is shared between two projects. There
    is no clear rule for which project should be billed for the travel day.  This impacts the total project cost, where
    costs _may_ be understated.

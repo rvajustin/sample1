@@ -10,7 +10,7 @@ public class ProjectSetTests : ProjectSetTest
     private static readonly OverlapConfiguration _overlapConfiguration = OverlapConfiguration.TakeFirst;
     
     [Fact]
-    public void ProjectSet1AmountIsAccurate()
+    public void ProjectSet1_AmountIsAccurate()
     {
         var p1 = new Project("Project 1", CityType.LoCost, new DateRange("2015-09-01", "2015-09-03"));
         
@@ -20,7 +20,7 @@ public class ProjectSetTests : ProjectSetTest
     }
     
     [Fact]
-    public void ProjectSet2AmountIsAccurate()
+    public void ProjectSet2_AmountIsAccurate()
     {
         var p1 = new Project("Project 1", CityType.LoCost, new DateRange("2015-09-01", "2015-09-01"));
         var p2 = new Project("Project 2", CityType.HiCost, new DateRange("2015-09-02", "2015-09-06"));
@@ -34,7 +34,7 @@ public class ProjectSetTests : ProjectSetTest
     }
     
     [Fact]
-    public void ProjectSet3AmountIsAccurate()
+    public void ProjectSet3_AmountIsAccurate()
     {
         var p1 = new Project("Project 1", CityType.LoCost, new DateRange("2015-09-01", "2015-09-03"));
         var p2 = new Project("Project 2", CityType.HiCost, new DateRange("2015-09-05", "2015-09-07"));
@@ -48,7 +48,7 @@ public class ProjectSetTests : ProjectSetTest
     }
     
     [Fact]
-    public void ProjectSet4AmountIsAccurate()
+    public void ProjectSet4_AmountIsAccurate()
     {
         var p1 = new Project("Project 1", CityType.LoCost, new DateRange("2015-09-01", "2015-09-01"));
         var p2 = new Project("Project 2", CityType.LoCost, new DateRange("2015-09-01", "2015-09-01"));

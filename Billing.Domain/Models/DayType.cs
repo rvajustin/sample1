@@ -3,6 +3,9 @@ using Billing.Domain.Common.Abstractions;
 
 namespace Billing.Domain.Models;
 
+/// <summary>
+/// Represents a type of day that can be billed.
+/// </summary>
 public record DayType : Enumeration
 {
     public static DayType Travel = new DayType(

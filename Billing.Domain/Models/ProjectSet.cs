@@ -3,11 +3,19 @@ namespace Billing.Domain.Models;
 using BillableDays = SortedDictionary<DateOnly, BillableDay>;
 using ProjectBills = Dictionary<Project, decimal>;
 
+/// <summary>
+/// Represents a set of projects that can be billed.
+/// </summary>
 public record ProjectSet(params Project[] Projects)
 {
     private IOrderedEnumerable<Project> ToSorted() 
         => Projects.OrderBy(d => d.Dates.Start).ThenBy(d => d.Dates.End);
 
+    /// <summary>
+    /// Calculates the billable days for the projects in the set.
+    /// </summary>
+    /// <param name="overlapConfiguration"></param>
+    /// <returns></returns>
     public ProjectBills Calculate(OverlapConfiguration? overlapConfiguration)
     {
         var projects = ToSorted().ToArray();
@@ -18,6 +26,11 @@ public record ProjectSet(params Project[] Projects)
         return projectBills;
     }
 
+    /// <summary>
+    /// Calculates the billable days for the projects in the set.
+    /// </summary>
+    /// <param name="billableDays"></param>
+    /// <returns></returns>
     private static ProjectBills CalculateProjectBills(BillableDays billableDays)
     {
         var projectBills = new ProjectBills();
@@ -33,6 +46,12 @@ public record ProjectSet(params Project[] Projects)
         return projectBills;
     }
 
+    /// <summary>
+    /// Gets the billable days for the projects in the set.
+    /// </summary>
+    /// <param name="projects"></param>
+    /// <param name="overlapConfiguration"></param>
+    /// <returns></returns>
     private static BillableDays GetBillableDays(Project[] projects, OverlapConfiguration overlapConfiguration)
     {
         var billableDays = new BillableDays();
@@ -74,6 +93,9 @@ public record ProjectSet(params Project[] Projects)
         return billableDays;
     }
 
+    /// <summary>
+    /// Revises the travel days to full days *if* they intersect with or overlap other projects.
+    /// </summary>
     private static BillableDays ReviseTravelDaysToFullDays(BillableDays billableDays)
     {
         for (var i = 0; i < billableDays.Count; i++)

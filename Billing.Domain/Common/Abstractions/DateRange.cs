@@ -1,16 +1,34 @@
 namespace Billing.Domain.Common.Abstractions;
 
+/// <summary>
+/// Represents a range of dates.
+/// </summary>
 public record DateRange(DateOnly Start, DateOnly End) 
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DateRange"/> class.
+    /// </summary>
     public DateRange(string start, string end) : this(DateOnly.Parse(start), DateOnly.Parse(end)) { }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DateRange"/> class.
+    /// </summary>
     public virtual bool Equals(DateRange? other) => other?.Start == Start && other?.End == End;
 
     public override int GetHashCode() => $"{Start}-{End}".GetHashCode();
     
+    /// <summary>
+    /// Determines if another date range shares a date or is adjacent to this date range.
+    /// </summary>
+    /// <param name="other"></param>
+    /// <param name="dates"></param>
+    /// <returns></returns>
     public bool IsIntersectionOrAdjacent(DateRange other, out DateOnly[] dates) 
         => IsIntersecting(other, out dates) || IsAdjacent(other, out dates);
 
+    /// <summary>
+    /// Determines if another date range shares a date with this date range.
+    /// </summary>
     public bool IsIntersecting(DateRange other, out DateOnly[] dates)
     {
         if (Start == other.End)
@@ -29,6 +47,9 @@ public record DateRange(DateOnly Start, DateOnly End)
         return false;
     }
 
+    /// <summary>
+    /// Determines if another date range is adjacent to this date range.
+    /// </summary>
     public bool IsAdjacent(DateRange other, out DateOnly[] dates)
     {
         if (other.End.AddDays(1) == Start)
@@ -47,6 +68,9 @@ public record DateRange(DateOnly Start, DateOnly End)
         return other?.End.AddDays(1) == Start || other?.Start.AddDays(-1) == End;
     }
 
+    /// <summary>
+    /// Gets the days between the start and end dates.
+    /// </summary>
     public DateOnly[] InterstitialDays()
     {
         if (End <= Start.AddDays(1))
